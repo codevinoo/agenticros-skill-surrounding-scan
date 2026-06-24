@@ -1,0 +1,74 @@
+{
+  "name": "agenticros-skill-surroundings-scan",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Surroundings Scan skill for AgenticROS — rotate in place and sample left/center/right depth at each bearing.",
+  "keywords": [
+    "agenticros",
+    "ros2",
+    "robotics",
+    "depth",
+    "telemetry",
+    "navigation",
+    "realsense"
+  ],
+  "homepage": "https://github.com/codevinoo/agenticros-skill-surrounding-scan#readme",
+  "bugs": {
+    "url": "https://github.com/codevinoo/agenticros-skill-surrounding-scan/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codevinoo/agenticros-skill-surrounding-scan.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm run typecheck && pnpm run build && node --test dist/__tests__/register.test.js"
+  },
+  "agenticros": {
+    "id": "surroundings-scan",
+    "displayName": "Surroundings Scan",
+    "description": "Rotate in place and sample depth in left/center/right sectors at each bearing — structured obstacle map for text-only LLMs (e.g. Nemotron).",
+    "categories": [
+      "telemetry",
+      "navigation"
+    ],
+    "capabilities": [
+      {
+        "id": "scan_surroundings",
+        "verb": "scan",
+        "description": "Rotate in place and sample depth in left/center/right sectors at evenly spaced bearings; returns a compact obstacle map.",
+        "inputs": {
+          "steps": "number",
+          "min_clearance_m": "number"
+        },
+        "outputs": {
+          "sectors": "array",
+          "clearest_bearing_deg": "number",
+          "clearest_center_m": "number",
+          "blocked_bearings": "array",
+          "summary": "string"
+        },
+        "interruptible": true,
+        "blocks_base": true
+      }
+    ]
+  },
+  "dependencies": {
+    "@agenticros/core": "^0.5.0",
+    "@sinclair/typebox": "^0.34.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "typescript": "^5.7.0"
+  },
+  "author": "PlaiPin",
+  "license": "Apache-2.0"
+}
