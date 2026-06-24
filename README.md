@@ -273,7 +273,7 @@ Example prompts:
 
 ## Development
 
-Uses **pnpm 9.15.4** (pinned in `packageManager`, same as the main AgenticROS repo). `@agenticros/core` lists optional native deps (`rclnodejs`, …) that this skill does not need — `.npmrc` sets `strict-dep-builds=false` so install succeeds without ROS sourced.
+Uses **pnpm 11.9.0** (pinned in `packageManager`). Run `corepack enable` once so Corepack selects that version. Optional native deps from `@agenticros/core` are disabled via `allowBuilds` in `pnpm-workspace.yaml` (pnpm 11 requirement).
 
 ```bash
 corepack enable

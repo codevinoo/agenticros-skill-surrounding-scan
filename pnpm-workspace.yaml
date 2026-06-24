@@ -1,0 +1,10 @@
+packages:
+  - .
+
+# @agenticros/core pulls optional native deps; this skill only needs TS types at build time.
+strictDepBuilds: false
+
+allowBuilds:
+  es5-ext: false
+  node-datachannel: false
+  rclnodejs: false
