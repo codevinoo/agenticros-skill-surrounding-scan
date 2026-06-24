@@ -50,7 +50,8 @@ AgenticROS has multiple adapters. **Skill tools load on the OpenClaw gateway**; 
 ```bash
 git clone git@github-codevino:codevinoo/agenticros-skill-surrounding-scan.git
 cd agenticros-skill-surrounding-scan
-pnpm install && pnpm build
+pnpm install
+pnpm build
 
 # Registers skillPaths + syncs openclaw.plugin.json allowlist
 agenticros skills add surroundings-scan
@@ -99,8 +100,11 @@ Then verify:
 ```bash
 git clone git@github-codevino:codevinoo/agenticros-skill-surrounding-scan.git
 cd agenticros-skill-surrounding-scan
-pnpm install && pnpm build
+corepack enable          # once per machine, if pnpm is not on PATH
+pnpm install             # run separately from build (do not type "pnpm install and build")
+pnpm build
 pnpm test
+```
 
 agenticros skills add surroundings-scan   # OpenClaw / NemoClaw
 agenticros skills sync
@@ -269,7 +273,10 @@ Example prompts:
 
 ## Development
 
+Uses **pnpm 9.15.4** (pinned in `packageManager`, same as the main AgenticROS repo). `@agenticros/core` lists optional native deps (`rclnodejs`, …) that this skill does not need — `.npmrc` sets `strict-dep-builds=false` so install succeeds without ROS sourced.
+
 ```bash
+corepack enable
 pnpm install
 pnpm run typecheck
 pnpm run build

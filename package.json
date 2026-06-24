@@ -69,6 +69,14 @@
     "@types/node": "^20.17.0",
     "typescript": "^5.7.0"
   },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "es5-ext",
+      "node-datachannel",
+      "rclnodejs"
+    ]
+  },
+  "packageManager": "pnpm@9.15.4",
   "author": "PlaiPin",
   "license": "Apache-2.0"
 }
